@@ -2,16 +2,6 @@
 
 This React application demonstrates how to work with form data, JSON, promises, and async/await. It showcases how to handle user inputs, fetch data from an API, and display results using modern JavaScript features in a React app.
 
-## Table of Contents
-
-1. [Technologies Used](#technologies-used)
-2. [Key Concepts](#key-concepts)
-3. [App Overview](#app-overview)
-4. [Components Overview](#components-overview)
-5. [Code Explanation](#code-explanation)
-6. [Setup Instructions](#setup-instructions)
-
----
 
 ## Technologies Used
 
@@ -74,58 +64,3 @@ This React app is designed to handle and display form data and fetch data from a
 - Takes the fetched data as a prop (`data`) and displays it on the screen.
 
 ---
-
-## Code Explanation
-
-### App Component
-
-```jsx
-import React, { useState } from "react";
-import Form from "./components/Form";
-import FetchData from "./components/FetchData";
-import DisplayData from "./components/DisplayData";
-
-function App() {
-  const [formData, setFormData] = useState(null);
-  const [data, setData] = useState(null);
-  
-  // Function to handle form submission
-  const handleFormSubmit = (data) => {
-    setFormData(data);
-  };
-  
-  // Function to fetch data
-  const handleFetchData = async () => {
-    const result = await FetchData();
-    setData(result);
-  };
-  
-  return (
-    <div className="AppContainer">
-      <div className="App">
-        <h1>React App: JSON, Form Data, Promises, Async/Await</h1>
-        
-        <Form onFormSubmit={handleFormSubmit} />
-        
-        <div data-id="user-info">
-          <h2>Form Data</h2>
-          {formData && (
-            <div>
-              <p>Name: {formData.name}</p>
-              <p>Email: {formData.email}</p>
-            </div>
-          )}
-        </div>
-        
-        <button onClick={handleFetchData}>Fetch Data</button>
-        
-        <div data-id="fetched-data">
-          <h2>Fetched Data (from JSON Placeholder)</h2>
-          {data && <DisplayData data={data} />}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default App;
